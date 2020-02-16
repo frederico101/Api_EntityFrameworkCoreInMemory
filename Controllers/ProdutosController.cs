@@ -1,10 +1,11 @@
-﻿using API.Data;
+﻿using System.Net.Http.Headers;
+using API.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ProdutosController : ControllerBase
     {
         private readonly IProdutoRepositorio _repositorio;
@@ -13,18 +14,27 @@ namespace API.Controllers
             _repositorio = repositorio;
         }
         [HttpPost]
+        [ApiVersion("1.0")]
         public IActionResult Criar([FromBody] Produto produto)
         {
+            if(produto.Codigo == "")
+            return BadRequest("Codigo do produto não informado");
+            
+            if(string.IsNullOrEmpty(produto.Descricao))
+            return BadRequest("Descrição do produto não informada");
+            
             _repositorio.Inserir(produto);
-            return Ok();
+            return Created(nameof(Criar), produto);
         }
         [HttpGet]
+        [ApiVersion("1.0")]
         public IActionResult Obter()
         {
             var lista = _repositorio.Obter();
             return Ok(lista);
         }
         [HttpGet("{id}")]
+        [ApiVersion("1.0")]
         public IActionResult Obter(int id)
         {   
             var produto = _repositorio.Obter(id);
@@ -32,14 +42,23 @@ namespace API.Controllers
             return Ok(produto);
         }
         [HttpPut]
+        [ApiVersion("1.0")]
         public IActionResult Atualizar([FromBody] Produto produto)
         {
             var prod = _repositorio.Obter(produto.Id);
-            if(prod.Id == null) return NotFound();
+            if(prod == null) return NotFound();
+            
+            if(produto.Codigo == "")
+            return BadRequest("Codigo do produto não informado");
+            
+            if(string.IsNullOrEmpty(produto.Descricao))
+            return BadRequest("Descrição do produto não informada");
+
             _repositorio.Editar(produto);
-            return Ok(produto);
+            return NoContent();
         }
         [HttpDelete("{id}")]
+        [ApiVersion("1.0")]
         public IActionResult Apagar(int id)
         {
             var prod = _repositorio.Obter(id);

@@ -25,6 +25,8 @@ namespace API
             opt.UseInMemoryDatabase(databaseName:"Loja")
               .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
             services.AddTransient<IProdutoRepositorio, ProdutoRepository>();
+
+            services.AddApiVersioning();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
