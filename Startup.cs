@@ -27,6 +27,7 @@ namespace API
             services.AddTransient<IProdutoRepositorio, ProdutoRepository>();
 
             services.AddApiVersioning();
+            services.AddResponseCaching();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +43,7 @@ namespace API
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseResponseCaching();
 
             app.UseEndpoints(endpoints =>
             {

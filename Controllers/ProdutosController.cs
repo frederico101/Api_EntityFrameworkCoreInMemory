@@ -65,5 +65,12 @@ namespace API.Controllers
             _repositorio.Excluir(prod);
             return Ok();
         }
+
+        [HttpGet("{codigo}")]
+        [ApiVersion("2.0")]
+        public IActionResult ObterPorcodigo(string codigo)
+        {
+            return Ok("Obter por codigo");
+        }
     }
 }
