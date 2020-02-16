@@ -27,6 +27,7 @@ namespace API.Controllers
         }
         [HttpGet]
         [ApiVersion("1.0")]
+        [ResponseCache(Duration=30)]
         public IActionResult Obter()
         {
             var lista = _repositorio.Obter();
