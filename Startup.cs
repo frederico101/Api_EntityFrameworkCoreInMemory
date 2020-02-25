@@ -36,7 +36,7 @@ namespace API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
+            
 
             app.UseHttpsRedirection();
 
@@ -44,11 +44,13 @@ namespace API
 
             app.UseAuthorization();
             app.UseResponseCaching();
-
+           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+           }
         }
     }
 }

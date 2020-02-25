@@ -14,6 +14,7 @@ namespace API.Controllers
         }
         [HttpPost]
         [ApiVersion("1.0")]
+        [ResponseCache(Duration=60)]
         public IActionResult Criar([FromBody] Produto produto)
         {
             if(produto.Codigo == "")
@@ -27,7 +28,7 @@ namespace API.Controllers
         }
         [HttpGet]
         [ApiVersion("1.0")]
-        [ResponseCache(Duration=30)]
+        [ResponseCache(Duration=60)]
         public IActionResult Obter()
         {
             var lista = _repositorio.Obter();
@@ -35,6 +36,7 @@ namespace API.Controllers
         }
         [HttpGet("{id}")]
         [ApiVersion("1.0")]
+        [ResponseCache(Duration=60)]
         public IActionResult Obter(int id)
         {   
             var produto = _repositorio.Obter(id);
