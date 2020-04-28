@@ -26,6 +26,7 @@ namespace API.Controllers
             _repositorio.Inserir(produto);
             return Created(nameof(Criar), produto);
         }
+
         [HttpGet]
         [ApiVersion("1.0")]
         [ResponseCache(Duration=60)]
@@ -71,9 +72,7 @@ namespace API.Controllers
 
         [HttpGet("{codigo}")]
         [ApiVersion("2.0")]
-        public IActionResult ObterPorcodigo(string codigo)
-        {
-            return Ok("Obter por codigo");
-        }
+        public IActionResult ObterPorcodigo(string codigo) => return Ok("Obter por codigo");
+        
     }
 }
