@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace API
-{
+{    // Tetes aprovados
     public class Startup
     {
         public Startup(IConfiguration configuration)
