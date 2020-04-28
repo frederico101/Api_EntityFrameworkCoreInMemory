@@ -72,7 +72,7 @@ namespace API.Controllers
 
         [HttpGet("{codigo}")]
         [ApiVersion("2.0")]
-        public IActionResult ObterPorcodigo(string codigo) => return Ok("Obter por codigo na versao 2");
+        public IActionResult ObterPorcodigo(string codigo) => Ok("Obter por codigo na versao 2");
         
     }
 }
