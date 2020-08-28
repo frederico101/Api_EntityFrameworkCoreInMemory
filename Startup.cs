@@ -7,10 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace API
-{    
+{
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup (IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -18,39 +18,37 @@ namespace API
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices (IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddDbContext<ProdutoContexto>(opt=>
-            opt.UseInMemoryDatabase(databaseName:"Loja")
-              .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
-            services.AddTransient<IProdutoRepositorio, ProdutoRepository>();
+            services.AddControllers ();
+            services.AddDbContext<ProdutoContexto> (opt =>
+                opt.UseInMemoryDatabase (databaseName: "Loja")
+                .UseQueryTrackingBehavior (QueryTrackingBehavior.NoTracking));
+            services.AddTransient<IProdutoRepositorio, ProdutoRepository> ();
 
-            services.AddApiVersioning();
-            services.AddResponseCaching();
+           // services.AddApiVersioning ();
+            services.AddResponseCaching ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure (IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment ())
             {
-                app.UseDeveloperExceptionPage();
-            
+                app.UseDeveloperExceptionPage ();
 
-            app.UseHttpsRedirection();
+                app.UseHttpsRedirection ();
 
-            app.UseRouting();
+                app.UseAuthorization ();
+                app.UseResponseCaching ();
+                app.UseRouting ();
 
-            app.UseAuthorization();
-            app.UseResponseCaching();
-           
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+                app.UseEndpoints (endpoints =>
+                {
+                    endpoints.MapControllers ();
+                });
 
-           }
+            }
         }
     }
 }

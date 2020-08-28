@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "1ae174a4-4761-48fc-bdad-1a5f3ebf4074",
+		"name": "ApiWithNewMan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\":1,\n      \"Codigo\": \"12\",\n      \"Descricao\": \"Camisa Polo\",\n      \"Valor\": 35.90\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/criar",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"criar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObterPorId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\":1,\n      \"Codigo\": \"12\",\n      \"Descricao\": \"Camisa Polo\",\n      \"Valor\": 35.90\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/atualizar",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"atualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObterPorcodigo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apagar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
